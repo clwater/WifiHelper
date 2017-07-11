@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.clwater.wifihelper.Adapter.DividerItemDecoration;
 import com.clwater.wifihelper.Adapter.NormalRecyclerViewAdapter;
 import com.clwater.wifihelper.R;
 
@@ -38,13 +39,14 @@ public class MainActivity extends AppCompatActivity {
 
         init();
 
-//        scan();
+        scan();
     }
 
     private void init() {
         recycleview_mian_list.setLayoutManager(new LinearLayoutManager(this));//这里用线性显示 类似于listview
         nrAdapter = new NormalRecyclerViewAdapter(this , list);
         recycleview_mian_list.setAdapter(nrAdapter);
+        recycleview_mian_list.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
     }
 
     @OnClick(R.id.button_main_scan)
@@ -68,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                     _wifi.setBssid(wifi.getBssid());
                     _wifi.setSsid(wifi.getSsid());
                     list.add(_wifi);
-                    Log.d("gzb" , list.size() + "");
                 }
                 nrAdapter.notifyDataSetChanged();
             }
