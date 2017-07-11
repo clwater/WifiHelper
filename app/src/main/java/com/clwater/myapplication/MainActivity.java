@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    String WifiMac;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
