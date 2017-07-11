@@ -8,7 +8,15 @@ public class WIFI {
     String ssid;
     String bssid;
     String pwd;
+    String statu;
 
+    public String getStatu() {
+        return statu;
+    }
+
+    public void setStatu(String statu) {
+        this.statu = statu;
+    }
 
     public String getPwd() {
         return pwd;

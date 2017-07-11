@@ -42,6 +42,7 @@ public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecycl
     public void onBindViewHolder(NormalTextViewHolder holder, int position) {
         holder.text_view_ssid.setText(list.get(position).getSsid());
         holder.text_view_bssid.setText(list.get(position).getBssid());
+        holder.textview_adapter_statu.setText(list.get(position).getStatu());
     }
 
     @Override
@@ -52,6 +53,7 @@ public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecycl
     public static class NormalTextViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.text_view_ssid) TextView text_view_ssid;
         @BindView(R.id.text_view_bssid) TextView text_view_bssid;
+        @BindView(R.id.textview_adapter_statu) TextView textview_adapter_statu;
 
         NormalTextViewHolder(View view) {
             super(view);
