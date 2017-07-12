@@ -1,6 +1,9 @@
 package com.clwater.wifihelper.Ui;
 
 
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,8 +13,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.clwater.wifihelper.Adapter.DividerItemDecoration;
 import com.clwater.wifihelper.Adapter.NormalRecyclerViewAdapter;
+import com.clwater.wifihelper.EventBus.EventBus_showinfo;
 import com.clwater.wifihelper.EventBus.EventBus_statu;
 import com.clwater.wifihelper.R;
 
@@ -98,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
     private  void getWfisattu(){
         for (int i = 0 ; i < list.size() ; i++){
+//        for (int i = 0 ; i < 3 ; i++){
             WIFI wifi = list.get(i);
 //            Log.d("gzb" , wifi.getSsid() + wifi.getBssid() + wifi.getPwd());
             getInfoFromWeb(wifi , i);
@@ -108,6 +115,43 @@ public class MainActivity extends AppCompatActivity {
     public void changeStatu(EventBus_statu e){
         list.get(e.getIndex()).setStatu(e.getStatu());
         nrAdapter.notifyDataSetChanged();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void showInfo(EventBus_showinfo e){
+        final WIFI wifi = list.get(e.getIndex());
+
+        if (wifi.getStatu().equals("查询失败")){
+            MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
+                    .title(wifi.getSsid())
+                    .positiveText("查询失败");
+
+            MaterialDialog dialog = builder.build();
+            dialog.show();
+        }else {
+            MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
+                    .title(wifi.getSsid())
+                    .positiveText("复制")
+                    .content(wifi.getPwd())
+                    .onPositive(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                            ClipboardManager cmb = (ClipboardManager)MainActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
+                            cmb.setText(wifi.getPwd());
+                            Toast.makeText(MainActivity.this , "密码复制成功" , Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .negativeText("取消");
+
+
+            MaterialDialog dialog = builder.build();
+            dialog.show();
+        }
+
+
+
+
+
     }
 
     private void getInfoFromWeb(final WIFI wifi , final int index) {
@@ -136,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (_response.indexOf("pwds") > 0){
                     pwd = _response.substring(_response.lastIndexOf("\"pwds\":[\"") + 9 , _response.length() - 4);
+                    list.get(index).setPwd(pwd);
                     statu = "查询成功";
                 }else {
                     statu = "查询失败";

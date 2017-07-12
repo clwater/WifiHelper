@@ -1,0 +1,128 @@
+{
+    "android_gradle_plugin_version": "2.3.3",
+    "apk_path": "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/build/outputs/apk/app-debug.apk",
+    "apt": {
+        "app": {
+            "aptArgs": [
+                
+            ],
+            "aptOutput": "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/build/generated/source/apt/debug",
+            "disableDiscovery": false,
+            "enabled": true,
+            "processor": null,
+            "processorPath": "/Users/gengzhibo/.android/build-cache/117d08f90015dce3ce0acb186fae836c284a04dc/output/jars/classes.jar:/Users/gengzhibo/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.7.0/2637055420a2da406e3ea9920c2ff4aafd38c970/butterknife-annotations-8.7.0.jar:/Users/gengzhibo/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.8.1/4d060ca3190df0eda4dc13415532a12e15ca5f11/okhttp-3.8.1.jar:/Users/gengzhibo/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar:/Users/gengzhibo/.gradle/caches/modules-2/files-2.1/org.greenrobot/eventbus/3.0.0/ddd99896e9569eaababbe81b35d80e1b91c4ad85/eventbus-3.0.0.jar:/Users/gengzhibo/.android/build-cache/252436c417de49cd92b9a342c453dcfa13ad7347/output/jars/classes.jar:/Users/gengzhibo/.android/build-cache/018aa0212c281723ca0ec2bc97196e1b04c060a8/output/jars/classes.jar:/Users/gengzhibo/.android/build-cache/1ad0a5033884344722d570ee15d31c94facb6ce7/output/jars/classes.jar:/Users/gengzhibo/.android/build-cache/c342067e1b6f814c394f60bb791ffbb974d113f4/output/jars/classes.jar:/Users/gengzhibo/.android/build-cache/c82a4874cf4168d0844bde7d626738cbd21e8dab/output/jars/classes.jar:/Users/gengzhibo/.android/build-cache/289af0ca83f29847b49d7f80857f595922d36bf0/output/jars/classes.jar:/Users/gengzhibo/.android/build-cache/7f63ec91ef73a75239a594075191f1fe65c23e78/output/jars/classes.jar:/Users/gengzhibo/.android/build-cache/0affc605b95e046a7431330c1847aa705acf4ddc/output/jars/classes.jar:/Users/gengzhibo/.android/build-cache/80c94e2563ab4e77d800df273dbdec4e6d4252da/output/jars/classes.jar:/Users/gengzhibo/.android/build-cache/df12dea9ae2c7d47b6f5372cef19dd420486cde8/output/jars/classes.jar:/Users/gengzhibo/.android/build-cache/ca525d82d48331df5c033a6a8aca44ae0b4b5334/output/jars/classes.jar:/Users/gengzhibo/.android/build-cache/620f2e509463cd65a66293e808ab5566c768dab9/output/jars/classes.jar:/Users/gengzhibo/.android/build-cache/7e41a3d918065a9033d647972de764a0996f3ab2/output/jars/classes.jar:/Users/gengzhibo/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar:/Users/gengzhibo/.android/build-cache/0fd95aaf41939af9153d0bfc3c2c6f034850818a/output/jars/classes.jar:/Users/gengzhibo/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-compiler/8.7.0/ab10fed14d794bbe0cd5b59043e8ed634ebb14e2/butterknife-compiler-8.7.0.jar:/Users/gengzhibo/.gradle/caches/modules-2/files-2.1/com.google.auto/auto-common/0.8/c6f7af0e57b9d69d81b05434ef9f3c5610d498c4/auto-common-0.8.jar:/Users/gengzhibo/.gradle/caches/modules-2/files-2.1/com.squareup/javapoet/1.9.0/ecc5cf9c221d55481163e773b24336db149e51/javapoet-1.9.0.jar:/Users/gengzhibo/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.0/support-annotations-25.3.0.jar:/Users/gengzhibo/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/19.0/6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9/guava-19.0.jar"
+        }
+    },
+    "apt_libraries": {
+        "dagger": false,
+        "butterknife": true
+    },
+    "auto_dependency": true,
+    "build_cache_dir": "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/build/freeline",
+    "build_directory": "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/build",
+    "build_script": "./gradlew :app:assembleDebug",
+    "build_script_work_directory": "",
+    "build_tools_directory": "/Users/gengzhibo/Library/Android/sdk/build-tools/26.0.0",
+    "build_tools_version": "26.0.0",
+    "check_sources_md5": [
+        
+    ],
+    "compile_sdk_directory": "/Users/gengzhibo/Library/Android/sdk/platforms/android-26",
+    "compile_sdk_version": "android-26",
+    "databinding": [
+        
+    ],
+    "databinding_compiler_jar": "",
+    "databinding_modules": [
+        
+    ],
+    "debug_package": "com.clwater.myapplication",
+    "exclude_dep_res_paths": [
+        
+    ],
+    "extra_dep_res_paths": [
+        
+    ],
+    "freeline_cache_dir": "/Users/gengzhibo/Desktop/github_me/WifiHelper",
+    "freeline_gradle_plugin_version": "0.8.7",
+    "ignore_resource_ids": [
+        "avd_hide_password_1",
+        "avd_hide_password_2",
+        "avd_hide_password_3",
+        "avd_show_password_1",
+        "avd_show_password_2",
+        "avd_show_password_3"
+    ],
+    "java_home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home",
+    "launcher": "com.clwater.wifihelper.Ui.MainActivity",
+    "main_assets_directory": [
+        "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/debug/assets",
+        "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/main/assets"
+    ],
+    "main_jniLibs_directory": [
+        "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/debug/jniLibs",
+        "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/main/jniLibs"
+    ],
+    "main_jni_directory": [
+        "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/debug/jni",
+        "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/main/jni"
+    ],
+    "main_manifest_path": "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/main/AndroidManifest.xml",
+    "main_project_dir": "app",
+    "main_project_name": "app",
+    "main_r_path": "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/build/generated/source/r/debug/R.java",
+    "main_res_directory": [
+        "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/debug/res",
+        "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/main/res"
+    ],
+    "main_src_directory": [
+        "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/debug/java",
+        "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/main/java"
+    ],
+    "module_dependencies": {
+        "app": [
+            
+        ]
+    },
+    "modules": [
+        {
+            "name": "app",
+            "path": "/Users/gengzhibo/Desktop/github_me/WifiHelper/app"
+        }
+    ],
+    "package": "com.clwater.wifihelper",
+    "product_flavor": "",
+    "project_source_sets": {
+        "app": {
+            "main_assets_directory": [
+                "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/debug/assets",
+                "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/main/assets"
+            ],
+            "main_jniLibs_directory": [
+                "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/debug/jniLibs",
+                "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/main/jniLibs"
+            ],
+            "main_jni_directory": [
+                "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/debug/jni",
+                "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/main/jni"
+            ],
+            "main_manifest_path": "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/main/AndroidManifest.xml",
+            "main_res_directory": [
+                "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/debug/res",
+                "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/main/res"
+            ],
+            "main_src_directory": [
+                "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/debug/java",
+                "/Users/gengzhibo/Desktop/github_me/WifiHelper/app/src/main/java"
+            ]
+        }
+    },
+    "project_type": "gradle",
+    "retrolambda": {
+        
+    },
+    "root_dir": "/Users/gengzhibo/Desktop/github_me/WifiHelper",
+    "sdk_directory": "/Users/gengzhibo/Library/Android/sdk",
+    "use_jdk8": true,
+    "use_system_gradle": false
+}

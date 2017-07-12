@@ -1,6 +1,7 @@
 package com.clwater.wifihelper.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.clwater.wifihelper.EventBus.EventBus_showinfo;
 import com.clwater.wifihelper.R;
 import com.clwater.wifihelper.Utils.WIFI;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +44,16 @@ public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecycl
 
     @Override
     public void onBindViewHolder(NormalTextViewHolder holder, int position) {
-        holder.text_view_ssid.setText(list.get(position).getSsid());
-        holder.text_view_bssid.setText(list.get(position).getBssid());
-        holder.textview_adapter_statu.setText(list.get(position).getStatu());
+        WIFI wifi = list.get(position);
+        holder.text_view_ssid.setText(wifi.getSsid());
+        holder.text_view_bssid.setText(wifi.getBssid());
+        holder.textview_adapter_statu.setText(wifi.getStatu());
+        if (wifi.getStatu().equals("查询失败")){
+            holder.textview_adapter_statu.setTextColor(Color.parseColor("#ff0000"));
+        }else if (wifi.getStatu().equals("查询成功")){
+            holder.textview_adapter_statu.setTextColor(Color.parseColor("#00ff00"));
+        }
+
     }
 
     @Override
@@ -62,6 +73,9 @@ public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecycl
                 @Override
                 public void onClick(View v) {
                     Log.d("gzb", "onClick--> position = " + getPosition());
+                    EventBus_showinfo e = new EventBus_showinfo();
+                    e.setIndex(getPosition());
+                    EventBus.getDefault().post(e);
                 }
             });
         }
