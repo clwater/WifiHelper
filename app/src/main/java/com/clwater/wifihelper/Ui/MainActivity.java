@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,10 @@ import com.clwater.wifihelper.Utils.WifiSearcher;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -71,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.button_main_scan)
     public void button_main_scan_onclick(){
+        list.clear();
+        nrAdapter.notifyDataSetChanged();
         scan();
 //        getAsynHttp();
     }
@@ -129,19 +136,23 @@ public class MainActivity extends AppCompatActivity {
             MaterialDialog dialog = builder.build();
             dialog.show();
         }else {
-            MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
+
+
+            MaterialDialog.Builder builder =  new MaterialDialog.Builder(this)
                     .title(wifi.getSsid())
-                    .positiveText("复制")
-                    .content(wifi.getPwd())
-                    .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    .items(wifi.getPwd())
+                    .content("可能有多个密码 点击对应的密码进行复制")
+                    .itemsCallback(new MaterialDialog.ListCallback() {
                         @Override
-                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                            Log.d("gzb" , "which:" + which);
                             ClipboardManager cmb = (ClipboardManager)MainActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
-                            cmb.setText(wifi.getPwd());
+                            cmb.setText(wifi.getPwd().get(which));
                             Toast.makeText(MainActivity.this , "密码复制成功" , Toast.LENGTH_SHORT).show();
                         }
-                    })
-                    .negativeText("取消");
+                    });
+
+
 
 
             MaterialDialog dialog = builder.build();
@@ -156,12 +167,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void getInfoFromWeb(final WIFI wifi , final int index) {
         OkHttpClient mOkHttpClient=new OkHttpClient();
-//        "http://api.wifi4.cn/Wifi.Info?token=sdaf&ssid=minyang&bssid=C8:3A:35:36:EA:20"
         String token = String.valueOf(Math.random()*1000);
         String url = String.format("http://api.wifi4.cn/Wifi.Info?token=%s&ssid=%s&bssid=%s" , token , wifi.getSsid() , wifi.getBssid());
-//        Log.d("gzb" , "url:  " + url);
         Request.Builder requestBuilder = new Request.Builder().url(url);
-        //可以省略，默认是GET请求
         requestBuilder.method("GET",null);
         Request request = requestBuilder.build();
         Call mcall= mOkHttpClient.newCall(request);
@@ -174,20 +182,19 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
 
                 String _response = response.body().string();
-//                Log.i("gzb", wifi.getSsid() + "  " + _response);
-                String pwd = "";
-                String statu;
+                Log.i("gzb", wifi.getSsid() + "  " + _response);
+                List<String> pwd = new ArrayList<String>();
 
-                if (_response.indexOf("pwds") > 0){
-                    pwd = _response.substring(_response.lastIndexOf("\"pwds\":[\"") + 9 , _response.length() - 4);
-                    list.get(index).setPwd(pwd);
-                    statu = "查询成功";
-                }else {
+                String statu ;
+                pwd = WifiInfoAnaylis(_response);
+                if (pwd.size() < 1){
                     statu = "查询失败";
+
+                }else {
+                    statu = "查询成功";
+                    list.get(index).setPwd(pwd);
                 }
 
-//                Log.i("gzb", "pwd" + pwd);
-//                Log.i("gzb", "statustatustatustatu" + statu);
 
                 EventBus_statu e = new EventBus_statu();
                 e.setStatu(statu);
@@ -198,6 +205,32 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private List<String> WifiInfoAnaylis(String response) {
+        List<String> list = new ArrayList<String>();
+        try {
+            JSONObject _jsobject = (JSONObject) new JSONTokener(response).nextValue();
+            String status = _jsobject.getString("status");
+//            Log.d("gzb" , status);
+            if (status.equals("error")){
+                return list;
+            }
+
+            JSONObject _data = _jsobject.getJSONObject("data");
+            JSONArray pwds = _data.getJSONArray("pwds");
+
+            for (int i = 0 ; i < pwds.length() ; i++){
+                list.add(pwds.get(i).toString());
+            }
+
+
+        } catch (JSONException e) {
+            return list;
+
+        }
+
+        return list;
     }
 
     @Override

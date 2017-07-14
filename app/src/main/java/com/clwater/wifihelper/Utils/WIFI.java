@@ -1,5 +1,7 @@
 package com.clwater.wifihelper.Utils;
 
+import java.util.List;
+
 /**
  * Created by gengzhibo on 17/7/11.
  */
@@ -7,7 +9,7 @@ package com.clwater.wifihelper.Utils;
 public class WIFI {
     String ssid;
     String bssid;
-    String pwd;
+    List<String> pwd;
     String statu;
 
     public String getStatu() {
@@ -18,11 +20,11 @@ public class WIFI {
         this.statu = statu;
     }
 
-    public String getPwd() {
+    public List<String> getPwd() {
         return pwd;
     }
 
-    public void setPwd(String pwd) {
+    public void setPwd(List<String> pwd) {
         this.pwd = pwd;
     }
 
